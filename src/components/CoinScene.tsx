@@ -3,6 +3,7 @@ import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { Clouds, Cloud, Environment, Float } from '@react-three/drei';
 import { MapPin, Play, Pause } from 'lucide-react';
 import * as THREE from 'three';
+import styles from './CoinScene.module.css';
 
 function Coin({ isPlaying }: { isPlaying: boolean }) {
   const meshRef = useRef<THREE.Mesh>(null!);
@@ -219,118 +220,37 @@ export default function CoinScene() {
     }
   }, []);
 
-  const textStyle = {
-    color: '#ffffff',
-    fontFamily: "'Arial', sans-serif",
-    fontSize: 'clamp(0.9rem, 2vw, 1.2rem)',
-    fontWeight: 400,
-    zIndex: 10,
-    textAlign: 'center' as const,
-    marginTop: '1rem',
-    marginBottom: '2rem',
-  };
-
-  const linkStyle = {
-    color: '#88ccdd',
-    textDecoration: 'none',
-    display: 'inline-flex' as const,
-    alignItems: 'center' as const,
-    gap: '0.3rem',
-  };
-
   return (
-    <div
-      style={{
-        width: '100vw',
-        height: '100vh',
-        background: '#0a0a0f',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'relative',
-      }}
-    >
+    <div className={styles.container}>
       <audio ref={audioRef} loop>
         <source src="/background-music.mp3" type="audio/mpeg" />
       </audio>
-      <button
-        onClick={toggleAudio}
-        style={{
-          position: 'absolute',
-          top: '2rem',
-          right: '2rem',
-          background: 'rgba(136, 204, 221, 0.2)',
-          border: '2px solid #88ccdd',
-          borderRadius: '50%',
-          width: '50px',
-          height: '50px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          cursor: 'pointer',
-          color: '#88ccdd',
-          transition: 'all 0.3s ease',
-          zIndex: 100,
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.background = 'rgba(136, 204, 221, 0.3)';
-          e.currentTarget.style.transform = 'scale(1.1)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.background = 'rgba(136, 204, 221, 0.2)';
-          e.currentTarget.style.transform = 'scale(1)';
-        }}
-      >
+      <button onClick={toggleAudio} className={styles.playButton}>
         {isPlaying ? <Pause size={24} /> : <Play size={24} />}
       </button>
-      <h1
-        style={{
-          marginTop: 80,
-          color: '#ffffff',
-          fontFamily: "'Arial Black', 'Impact', sans-serif",
-          fontSize: 'clamp(1.2rem, 3vw, 2.5rem)',
-          fontWeight: 900,
-          textTransform: 'uppercase',
-          letterSpacing: '0.15em',
-          zIndex: 10,
-          textAlign: 'center',
-          whiteSpace: 'nowrap',
-          textShadow: '0 0 20px rgba(100, 200, 220, 0.3)',
-        }}
-      >
-        {/* From the Land of Indonesia 🇮🇩 */}
-        {/* BCKYRD COFFEE */}
-        LOCKD IN
-      </h1>
-      <p style={textStyle}>
-        {/* Visit us{' '} */}
+      <h1 className={styles.heading}>LOCKD IN</h1>
+      <p className={styles.text}>
         <a
           href="https://maps.app.goo.gl/8FBhfiYi3aCoeQjE7"
           target="_blank"
           rel="noopener noreferrer"
-          style={linkStyle}
+          className={styles.link}
         >
           <MapPin size={18} />
           West Jurang Manggu, South Tangerang City
         </a>
       </p>
-      <p style={textStyle}>
+      <p className={styles.text}>
         <a
           href="https://linktr.ee/bckyrdcoffee"
           target="_blank"
           rel="noopener noreferrer"
-          style={linkStyle}
+          className={styles.link}
         >
           linktr.ee/bckyrdcoffee
         </a>
       </p>
-      <div
-        style={{
-          height: '100%',
-          width: '100%',
-        }}
-      >
+      <div className={styles.canvasContainer}>
         <Canvas camera={{ position: [0, 0, 7], fov: 50 }}>
           <Scene isPlaying={isPlaying} />
         </Canvas>
