@@ -122,6 +122,25 @@ function Scene() {
 }
 
 export default function CoinScene() {
+  const textStyle = {
+    color: '#ffffff',
+    fontFamily: "'Arial', sans-serif",
+    fontSize: 'clamp(0.9rem, 2vw, 1.2rem)',
+    fontWeight: 400,
+    zIndex: 10,
+    textAlign: 'center' as const,
+    marginTop: '1rem',
+    marginBottom: '2rem',
+  };
+
+  const linkStyle = {
+    color: '#88ccdd',
+    textDecoration: 'none',
+    display: 'inline-flex' as const,
+    alignItems: 'center' as const,
+    gap: '0.3rem',
+  };
+
   return (
     <div
       style={{
@@ -136,8 +155,6 @@ export default function CoinScene() {
     >
       <h1
         style={{
-          // alignSelf: 'center',
-          // transform: 'translateX(-50%)',
           marginTop: 80,
           color: '#ffffff',
           fontFamily: "'Arial Black', 'Impact', sans-serif",
@@ -155,33 +172,26 @@ export default function CoinScene() {
         {/* BCKYRD COFFEE */}
         LOCKD IN
       </h1>
-      <p
-        style={{
-          color: '#ffffff',
-          fontFamily: "'Arial', sans-serif",
-          fontSize: 'clamp(0.9rem, 2vw, 1.2rem)',
-          fontWeight: 400,
-          zIndex: 10,
-          textAlign: 'center',
-          marginTop: '1rem',
-          marginBottom: '2rem',
-        }}
-      >
+      <p style={textStyle}>
         Meanwhile visit us{' '}
         <a
           href="https://maps.app.goo.gl/8FBhfiYi3aCoeQjE7"
           target="_blank"
           rel="noopener noreferrer"
-          style={{
-            color: '#88ccdd',
-            textDecoration: 'none',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.3rem',
-          }}
+          style={linkStyle}
         >
           <MapPin size={18} />
           West Jurang Manggu, South Tangerang City
+        </a>
+      </p>
+      <p style={textStyle}>
+        <a
+          href="https://linktr.ee/bckyrdcoffee"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={linkStyle}
+        >
+          linktr.ee/bckyrdcoffee
         </a>
       </p>
       <div
