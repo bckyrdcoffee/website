@@ -231,7 +231,7 @@ export default function CoinScene() {
         LOCKD IN
       </h1>
       <p style={textStyle}>
-        Meanwhile visit us{' '}
+        {/* Visit us{' '} */}
         <a
           href="https://maps.app.goo.gl/8FBhfiYi3aCoeQjE7"
           target="_blank"
