@@ -243,7 +243,7 @@ export default function CoinScene() {
       <h1 className={styles.heading}>LOCKD IN</h1>
       <p className={styles.text}>
         <a
-          href="https://www.google.com/maps/place/BCKYRD+Coffee+and+Shop,+Bintaro/@-6.2611837,106.7211022,17.79z/data=!4m6!3m5!1s0x2e69f18851a8f6db:0x66dc2e47d8c2da1e!8m2!3d-6.2615094!4d106.7220699!16s%2Fg%2F11ghtpcnxf?entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D"
+          href="https://maps.app.goo.gl/1ittg6AuV18HnEyx9"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.link}
