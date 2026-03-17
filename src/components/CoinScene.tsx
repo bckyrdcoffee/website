@@ -28,7 +28,7 @@ function Coin() {
     });
   }, []);
 
-  const faceMaterial = useMemo(() => {
+  const faceMaterialFront = useMemo(() => {
     return new THREE.MeshStandardMaterial({
       map: texture,
       metalness: 0.4,
@@ -36,9 +36,21 @@ function Coin() {
     });
   }, [texture]);
 
+  const faceMaterialBack = useMemo(() => {
+    const flippedTexture = texture.clone();
+    flippedTexture.center.set(0.5, 0.5);
+    flippedTexture.rotation = Math.PI;
+    flippedTexture.needsUpdate = true;
+    return new THREE.MeshStandardMaterial({
+      map: flippedTexture,
+      metalness: 0.4,
+      roughness: 0.4,
+    });
+  }, [texture]);
+
   const materials = useMemo(() => {
-    return [edgeMaterial, faceMaterial, faceMaterial];
-  }, [edgeMaterial, faceMaterial]);
+    return [edgeMaterial, faceMaterialFront, faceMaterialBack];
+  }, [edgeMaterial, faceMaterialFront, faceMaterialBack]);
 
   useFrame((_, delta) => {
     if (meshRef.current) {
@@ -51,7 +63,7 @@ function Coin() {
       ref={meshRef}
       geometry={coinGeometry}
       material={materials}
-      rotation={[Math.PI / 5, 0, 0]}
+      rotation={[0, 0, Math.PI / 2]}
     />
   );
 }
