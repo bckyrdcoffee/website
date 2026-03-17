@@ -1,6 +1,7 @@
 import { useRef, useMemo } from 'react';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { Clouds, Cloud, Environment, Float } from '@react-three/drei';
+import { MapPin } from 'lucide-react';
 import * as THREE from 'three';
 
 function Coin() {
@@ -137,7 +138,7 @@ export default function CoinScene() {
         style={{
           // alignSelf: 'center',
           // transform: 'translateX(-50%)',
-          marginTop: 200,
+          marginTop: 80,
           color: '#ffffff',
           fontFamily: "'Arial Black', 'Impact', sans-serif",
           fontSize: 'clamp(1.2rem, 3vw, 2.5rem)',
@@ -154,6 +155,35 @@ export default function CoinScene() {
         {/* BCKYRD COFFEE */}
         LOCKD IN
       </h1>
+      <p
+        style={{
+          color: '#ffffff',
+          fontFamily: "'Arial', sans-serif",
+          fontSize: 'clamp(0.9rem, 2vw, 1.2rem)',
+          fontWeight: 400,
+          zIndex: 10,
+          textAlign: 'center',
+          marginTop: '1rem',
+          marginBottom: '2rem',
+        }}
+      >
+        Meanwhile visit us{' '}
+        <a
+          href="https://maps.app.goo.gl/8FBhfiYi3aCoeQjE7"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            color: '#88ccdd',
+            textDecoration: 'none',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.3rem',
+          }}
+        >
+          <MapPin size={18} />
+          West Jurang Manggu, South Tangerang City
+        </a>
+      </p>
       <div
         style={{
           height: '100%',
