@@ -29,7 +29,7 @@ function Coin({ isPlaying }: { isPlaying: boolean }) {
 
   const edgeMaterial = useMemo(() => {
     return new THREE.MeshStandardMaterial({
-      color: '#4a90e2',
+      color: '#6abfbf',
       metalness: 0.8,
       roughness: 0.3,
     });
