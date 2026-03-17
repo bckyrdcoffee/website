@@ -251,8 +251,8 @@ export default function CoinScene() {
           <MapPin size={18} />
           West Jurang Manggu, South Tangerang City
         </a>
-      </p>
-      <p className={styles.text}>
+
+        <br />
         <a
           href="https://linktr.ee/bckyrdcoffee"
           target="_blank"

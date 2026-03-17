@@ -102,6 +102,7 @@
 }
 
 .link {
+  margin-top: 0.5rem;
   color: #88ccdd;
   text-decoration: none;
   display: inline-flex;
