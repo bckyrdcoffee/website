@@ -1,7 +1,7 @@
 import { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { Clouds, Cloud, Environment, Float } from '@react-three/drei';
-import { MapPin, Play, Pause } from 'lucide-react';
+import { MapPin, Play, Pause, Volume2, VolumeX } from 'lucide-react';
 import * as THREE from 'three';
 import styles from './CoinScene.module.css';
 
@@ -201,6 +201,7 @@ function Scene({ isPlaying }: { isPlaying: boolean }) {
 
 export default function CoinScene() {
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isMute, setIsMute] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const toggleAudio = () => {
@@ -211,6 +212,13 @@ export default function CoinScene() {
         audioRef.current.play();
       }
       setIsPlaying(!isPlaying);
+    }
+  };
+
+  const toggleMute = () => {
+    if (audioRef.current) {
+      audioRef.current.muted = !isMute;
+      setIsMute(!isMute);
     }
   };
 
@@ -228,6 +236,9 @@ export default function CoinScene() {
       </audio>
       <button onClick={toggleAudio} className={styles.playButton}>
         {isPlaying ? <Pause size={24} /> : <Play size={24} />}
+      </button>
+      <button onClick={toggleMute} className={styles.muteButton}>
+        {isMute ? <VolumeX size={24} /> : <Volume2 size={24} />}
       </button>
       <h1 className={styles.heading}>LOCKD IN</h1>
       <p className={styles.text}>
