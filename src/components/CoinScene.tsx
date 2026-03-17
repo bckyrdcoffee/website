@@ -1,10 +1,10 @@
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { Clouds, Cloud, Environment, Float } from '@react-three/drei';
-import { MapPin } from 'lucide-react';
+import { MapPin, Play, Pause } from 'lucide-react';
 import * as THREE from 'three';
 
-function Coin() {
+function Coin({ isPlaying }: { isPlaying: boolean }) {
   const meshRef = useRef<THREE.Mesh>(null!);
   const texture = useLoader(THREE.TextureLoader, '/coin.png');
 
@@ -54,7 +54,7 @@ function Coin() {
   }, [edgeMaterial, faceMaterialFront, faceMaterialBack]);
 
   useFrame((_, delta) => {
-    if (meshRef.current) {
+    if (meshRef.current && isPlaying) {
       meshRef.current.rotation.y += delta * 0.4;
     }
   });
@@ -69,12 +69,12 @@ function Coin() {
   );
 }
 
-export function FogClouds() {
+export function FogClouds({ isPlaying }: { isPlaying: boolean }) {
   return (
     <Clouds material={THREE.MeshBasicMaterial}>
       <Cloud
         position={[-3, -1.2, -2]}
-        speed={0.2}
+        speed={isPlaying ? 0.2 : 0}
         opacity={0.15}
         bounds={[4, 1, 1]}
         segments={8}
@@ -82,7 +82,7 @@ export function FogClouds() {
       />
       <Cloud
         position={[3, -1, -2.5]}
-        speed={0.15}
+        speed={isPlaying ? 0.15 : 0}
         opacity={0.12}
         bounds={[4, 1, 1]}
         segments={8}
@@ -90,7 +90,7 @@ export function FogClouds() {
       />
       <Cloud
         position={[0, -1.5, -3]}
-        speed={0.1}
+        speed={isPlaying ? 0.1 : 0}
         opacity={0.18}
         bounds={[5, 1.5, 1.5]}
         segments={10}
@@ -100,7 +100,7 @@ export function FogClouds() {
   );
 }
 
-function Scene() {
+function Scene({ isPlaying }: { isPlaying: boolean }) {
   return (
     <>
       <ambientLight intensity={0.3} />
@@ -112,16 +112,40 @@ function Scene() {
       />
       <pointLight position={[0, 3, 3]} intensity={0.8} color="#66bbcc" />
       <fog attach="fog" args={['#0a0a0f', 5, 15]} />
-      <Float speed={1.5} rotationIntensity={0.1} floatIntensity={0.3}>
-        <Coin />
+      <Float
+        speed={isPlaying ? 1.5 : 0}
+        rotationIntensity={0.1}
+        floatIntensity={0.3}
+      >
+        <Coin isPlaying={isPlaying} />
       </Float>
-      <FogClouds />
+      <FogClouds isPlaying={isPlaying} />
       <Environment preset="night" />
     </>
   );
 }
 
 export default function CoinScene() {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  const toggleAudio = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.3;
+    }
+  }, []);
+
   const textStyle = {
     color: '#ffffff',
     fontFamily: "'Arial', sans-serif",
@@ -151,8 +175,42 @@ export default function CoinScene() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        position: 'relative',
       }}
     >
+      <audio ref={audioRef} loop>
+        <source src="/background-music.mp3" type="audio/mpeg" />
+      </audio>
+      <button
+        onClick={toggleAudio}
+        style={{
+          position: 'absolute',
+          top: '2rem',
+          right: '2rem',
+          background: 'rgba(136, 204, 221, 0.2)',
+          border: '2px solid #88ccdd',
+          borderRadius: '50%',
+          width: '50px',
+          height: '50px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          cursor: 'pointer',
+          color: '#88ccdd',
+          transition: 'all 0.3s ease',
+          zIndex: 100,
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = 'rgba(136, 204, 221, 0.3)';
+          e.currentTarget.style.transform = 'scale(1.1)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.background = 'rgba(136, 204, 221, 0.2)';
+          e.currentTarget.style.transform = 'scale(1)';
+        }}
+      >
+        {isPlaying ? <Pause size={24} /> : <Play size={24} />}
+      </button>
       <h1
         style={{
           marginTop: 80,
@@ -201,7 +259,7 @@ export default function CoinScene() {
         }}
       >
         <Canvas camera={{ position: [0, 0, 7], fov: 50 }}>
-          <Scene />
+          <Scene isPlaying={isPlaying} />
         </Canvas>
       </div>
     </div>
