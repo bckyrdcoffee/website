@@ -63,7 +63,7 @@ function Coin() {
       ref={meshRef}
       geometry={coinGeometry}
       material={materials}
-      rotation={[0, 0, Math.PI / 2]}
+      rotation={[0, 0, Math.PI / 2.1]}
     />
   );
 }
@@ -72,44 +72,28 @@ export function FogClouds() {
   return (
     <Clouds material={THREE.MeshBasicMaterial}>
       <Cloud
-        position={[-3, -1.2, 0.5]}
+        position={[-3, -1.2, -2]}
         speed={0.2}
-        opacity={0.4}
-        bounds={[6, 1.5, 1.5]}
-        segments={20}
-        color="#1a3a4a"
-      />
-      <Cloud
-        position={[3, -1, 1]}
-        speed={0.15}
-        opacity={0.35}
-        bounds={[7, 1.5, 1.5]}
-        segments={20}
-        color="#1a3a4a"
-      />
-      <Cloud
-        position={[0, -1.5, 0]}
-        speed={0.1}
-        opacity={0.5}
-        bounds={[10, 2, 2]}
-        segments={30}
-        color="#0d2030"
-      />
-      <Cloud
-        position={[-1, 0.5, -1]}
-        speed={0.25}
-        opacity={0.2}
-        bounds={[5, 1, 1]}
-        segments={15}
-        color="#1a4a5a"
-      />
-      <Cloud
-        position={[2, 0.8, -1.5]}
-        speed={0.18}
         opacity={0.15}
         bounds={[4, 1, 1]}
-        segments={12}
-        color="#1a4a5a"
+        segments={8}
+        color="#e8e8f0"
+      />
+      <Cloud
+        position={[3, -1, -2.5]}
+        speed={0.15}
+        opacity={0.12}
+        bounds={[4, 1, 1]}
+        segments={8}
+        color="#d8d8e8"
+      />
+      <Cloud
+        position={[0, -1.5, -3]}
+        speed={0.1}
+        opacity={0.18}
+        bounds={[5, 1.5, 1.5]}
+        segments={10}
+        color="#f0f0f8"
       />
     </Clouds>
   );
@@ -130,6 +114,7 @@ function Scene() {
       <Float speed={1.5} rotationIntensity={0.1} floatIntensity={0.3}>
         <Coin />
       </Float>
+      <FogClouds />
       <Environment preset="night" />
     </>
   );
@@ -142,15 +127,17 @@ export default function CoinScene() {
         width: '100vw',
         height: '100vh',
         background: '#0a0a0f',
-        position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
     >
       <h1
         style={{
-          position: 'absolute',
-          top: '8%',
-          left: '50%',
-          transform: 'translateX(-50%)',
+          // alignSelf: 'center',
+          // transform: 'translateX(-50%)',
+          marginTop: 200,
           color: '#ffffff',
           fontFamily: "'Arial Black', 'Impact', sans-serif",
           fontSize: 'clamp(1.2rem, 3vw, 2.5rem)',
@@ -163,11 +150,20 @@ export default function CoinScene() {
           textShadow: '0 0 20px rgba(100, 200, 220, 0.3)',
         }}
       >
-        From the Land of Indonesia
+        {/* From the Land of Indonesia 🇮🇩 */}
+        {/* BCKYRD COFFEE */}
+        LOCKD IN
       </h1>
-      <Canvas camera={{ position: [0, 0, 7], fov: 50 }}>
-        <Scene />
-      </Canvas>
+      <div
+        style={{
+          height: '100%',
+          width: '100%',
+        }}
+      >
+        <Canvas camera={{ position: [0, 0, 7], fov: 50 }}>
+          <Scene />
+        </Canvas>
+      </div>
     </div>
   );
 }
