@@ -7,6 +7,11 @@ import * as THREE from 'three';
 function Coin({ isPlaying }: { isPlaying: boolean }) {
   const meshRef = useRef<THREE.Mesh>(null!);
   const texture = useLoader(THREE.TextureLoader, '/coin.png');
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
+  const [rotationVelocity, setRotationVelocity] = useState(0);
+  const lastDragTimeRef = useRef(0);
+  const velocityHistoryRef = useRef<number[]>([]);
 
   const coinGeometry = useMemo(() => {
     const radius = 2;
@@ -53,9 +58,76 @@ function Coin({ isPlaying }: { isPlaying: boolean }) {
     return [edgeMaterial, faceMaterialFront, faceMaterialBack];
   }, [edgeMaterial, faceMaterialFront, faceMaterialBack]);
 
+  const handlePointerDown = (e: any) => {
+    e.stopPropagation();
+    setIsDragging(true);
+    setDragStartX(e.clientX || e.touches?.[0]?.clientX || 0);
+    setRotationVelocity(0);
+    lastDragTimeRef.current = Date.now();
+    velocityHistoryRef.current = [];
+  };
+
+  useEffect(() => {
+    const handlePointerMove = (e: any) => {
+      if (!isDragging) return;
+
+      const currentTime = Date.now();
+      const currentX = e.clientX || e.touches?.[0]?.clientX || 0;
+      const deltaX = currentX - dragStartX;
+      const deltaTime = Math.max(currentTime - lastDragTimeRef.current, 1);
+
+      const velocity = (deltaX / deltaTime) * 16;
+
+      velocityHistoryRef.current.push(velocity);
+      if (velocityHistoryRef.current.length > 5) {
+        velocityHistoryRef.current.shift();
+      }
+
+      const rotationDelta = velocity * 0.01;
+
+      if (meshRef.current) {
+        meshRef.current.rotation.y += rotationDelta;
+      }
+
+      setDragStartX(currentX);
+      lastDragTimeRef.current = currentTime;
+    };
+
+    const handlePointerUp = () => {
+      setIsDragging(false);
+
+      if (velocityHistoryRef.current.length > 0) {
+        const avgVelocity =
+          velocityHistoryRef.current.reduce((a, b) => a + b, 0) /
+          velocityHistoryRef.current.length;
+        setRotationVelocity(avgVelocity * 0.01);
+      }
+    };
+
+    if (isDragging) {
+      window.addEventListener('mousemove', handlePointerMove);
+      window.addEventListener('mouseup', handlePointerUp);
+      window.addEventListener('touchmove', handlePointerMove);
+      window.addEventListener('touchend', handlePointerUp);
+
+      return () => {
+        window.removeEventListener('mousemove', handlePointerMove);
+        window.removeEventListener('mouseup', handlePointerUp);
+        window.removeEventListener('touchmove', handlePointerMove);
+        window.removeEventListener('touchend', handlePointerUp);
+      };
+    }
+  }, [isDragging, dragStartX]);
+
   useFrame((_, delta) => {
-    if (meshRef.current && isPlaying) {
-      meshRef.current.rotation.y += delta * 0.4;
+    if (meshRef.current) {
+      if (isPlaying && !isDragging) {
+        meshRef.current.rotation.y += delta * 0.4;
+      } else if (!isDragging && Math.abs(rotationVelocity) > 0.0001) {
+        meshRef.current.rotation.y += rotationVelocity * delta * 60;
+        const friction = 0.92;
+        setRotationVelocity(rotationVelocity * friction);
+      }
     }
   });
 
@@ -65,6 +137,7 @@ function Coin({ isPlaying }: { isPlaying: boolean }) {
       geometry={coinGeometry}
       material={materials}
       rotation={[0, 0, Math.PI / 2.1]}
+      onPointerDown={handlePointerDown}
     />
   );
 }
