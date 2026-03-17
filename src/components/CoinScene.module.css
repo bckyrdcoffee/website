@@ -54,7 +54,7 @@
   transform: scale(1.05);
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .playButton {
     top: 1.5rem;
     right: 50%;
@@ -74,7 +74,7 @@
   .muteButton:hover {
     transform: translateX(calc(50% - 2rem)) scale(1.05);
   }
-}
+} */
 
 .heading {
   margin-top: 80px;
