@@ -216,6 +216,7 @@ export default function CoinScene() {
 
   useEffect(() => {
     if (audioRef.current) {
+      audioRef.current.play();
       audioRef.current.volume = 0.3;
     }
   }, []);
