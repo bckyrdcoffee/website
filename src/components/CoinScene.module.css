@@ -117,3 +117,25 @@
   height: 100%;
   width: 100%;
 }
+
+@media (max-width: 768px) {
+  .playButton {
+    top: 1.5rem;
+    right: 50%;
+    transform: translateX(calc(50% + 2rem));
+  }
+
+  .playButton:hover {
+    transform: translateX(calc(50% + 2rem)) scale(1.05);
+  }
+
+  .muteButton {
+    top: 1.5rem;
+    right: 50%;
+    transform: translateX(calc(50% - 2rem));
+  }
+
+  .muteButton:hover {
+    transform: translateX(calc(50% - 2rem)) scale(1.05);
+  }
+}
