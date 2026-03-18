@@ -7,7 +7,17 @@ import {
   Float,
   useProgress,
 } from '@react-three/drei';
-import { MapPin, Play, Pause, Volume2, VolumeX, Link2Icon } from 'lucide-react';
+import {
+  MapPin,
+  Play,
+  Pause,
+  Volume2,
+  VolumeX,
+  Link2Icon,
+  Phone,
+  Instagram,
+  Bike,
+} from 'lucide-react';
 import * as THREE from 'three';
 import styles from './CoinScene.module.css';
 
@@ -326,15 +336,38 @@ export default function CoinScene() {
             West Jurang Manggu, South Tangerang City
           </a>
           <br />
-          <a
-            href="https://linktr.ee/bckyrdcoffee"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.link}
-          >
-            <Link2Icon size={18} />
-            linktr.ee/bckyrdcoffee
-          </a>
+          <br />
+          <span className={styles.linksContainer}>
+            <a
+              href="https://gofood.link/u/N0myR"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.link}
+            >
+              <Bike size={18} />
+              GoFood
+            </a>
+            <span className={styles.separator}>・</span>
+            <a
+              href="http://wa.me/6281286997816"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.link}
+            >
+              <Phone size={18} />
+              Contact Person
+            </a>
+            <span className={styles.separator}>・</span>
+            <a
+              href="https://instagram.com/backyardcoffeeandshop"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.link}
+            >
+              <Instagram size={18} />
+              backyardcoffeeandshop
+            </a>
+          </span>
         </p>
       </div>
     </div>

@@ -176,6 +176,30 @@
   opacity: 0.7;
 }
 
+.linksContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.separator {
+  color: inherit;
+}
+
+@media (max-width: 768px) {
+  .linksContainer {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .separator {
+    display: none;
+  }
+}
+
 .canvasContainer {
   position: absolute;
   top: 0;
