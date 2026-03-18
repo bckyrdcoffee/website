@@ -1,6 +1,12 @@
-import { useRef, useMemo, useState, useEffect } from 'react';
+import { useRef, useMemo, useState, useEffect, Suspense } from 'react';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
-import { Clouds, Cloud, Environment, Float } from '@react-three/drei';
+import {
+  Clouds,
+  Cloud,
+  Environment,
+  Float,
+  useProgress,
+} from '@react-three/drei';
 import { MapPin, Play, Pause, Volume2, VolumeX, Link2Icon } from 'lucide-react';
 import * as THREE from 'three';
 import styles from './CoinScene.module.css';
@@ -216,6 +222,22 @@ export function FogClouds({ isPlaying }: { isPlaying: boolean }) {
   );
 }
 
+function Loader() {
+  const { progress } = useProgress();
+
+  return (
+    <div className={styles.loader}>
+      <div className={styles.loaderBar}>
+        <div
+          className={styles.loaderProgress}
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+      <p className={styles.loaderText}>{Math.round(progress)}%</p>
+    </div>
+  );
+}
+
 function Scene({ isPlaying }: { isPlaying: boolean }) {
   return (
     <>
@@ -228,15 +250,17 @@ function Scene({ isPlaying }: { isPlaying: boolean }) {
       />
       <pointLight position={[0, 3, 3]} intensity={0.8} color="#66bbcc" />
       <fog attach="fog" args={['#0a0a0f', 5, 15]} />
-      <Float
-        speed={isPlaying ? 1.5 : 0}
-        rotationIntensity={0.1}
-        floatIntensity={0.3}
-      >
-        <Coin isPlaying={isPlaying} />
-      </Float>
-      <FogClouds isPlaying={isPlaying} />
-      <Environment preset="city" />
+      <Suspense fallback={null}>
+        <Float
+          speed={isPlaying ? 1.5 : 0}
+          rotationIntensity={0.1}
+          floatIntensity={0.3}
+        >
+          <Coin isPlaying={isPlaying} />
+        </Float>
+        <FogClouds isPlaying={isPlaying} />
+        <Environment preset="city" />
+      </Suspense>
     </>
   );
 }
@@ -276,11 +300,13 @@ export default function CoinScene() {
       <audio ref={audioRef} loop>
         <source src="/background-music.mp3" type="audio/mpeg" />
       </audio>
-      <div className={styles.canvasContainer}>
-        <Canvas camera={{ position: [0, 0, 7], fov: 50 }}>
-          <Scene isPlaying={isPlaying} />
-        </Canvas>
-      </div>
+      <Suspense fallback={<Loader />}>
+        <div className={styles.canvasContainer}>
+          <Canvas camera={{ position: [0, 0, 7], fov: 50 }}>
+            <Scene isPlaying={isPlaying} />
+          </Canvas>
+        </div>
+      </Suspense>
       <div className={styles.content}>
         <button onClick={toggleAudio} className={styles.playButton}>
           {isPlaying ? <Pause size={24} /> : <Play size={24} />}
