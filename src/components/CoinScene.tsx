@@ -149,42 +149,26 @@ export function FogClouds({ isPlaying }: { isPlaying: boolean }) {
       <Cloud
         position={[-3, -1.2, -2]}
         speed={isPlaying ? 0.2 : 0}
-        opacity={0.15}
-        bounds={[4, 1, 1]}
-        segments={8}
+        opacity={0.12}
+        bounds={[3, 1, 1]}
+        segments={5}
         color="#e8e8f0"
       />
       <Cloud
         position={[3, -1, -2.5]}
         speed={isPlaying ? 0.15 : 0}
-        opacity={0.12}
-        bounds={[4, 1, 1]}
-        segments={8}
+        opacity={0.1}
+        bounds={[3, 1, 1]}
+        segments={5}
         color="#d8d8e8"
-      />
-      <Cloud
-        position={[0, -1.5, -3]}
-        speed={isPlaying ? 0.1 : 0}
-        opacity={0.18}
-        bounds={[5, 1.5, 1.5]}
-        segments={10}
-        color="#f0f0f8"
       />
       <Cloud
         position={[-2, 0.5, 2]}
         speed={isPlaying ? 0.25 : 0}
-        opacity={0.08}
-        bounds={[3, 2, 2]}
-        segments={12}
+        opacity={0.06}
+        bounds={[2.5, 1.5, 1.5]}
+        segments={6}
         color="#f5f5fa"
-      />
-      <Cloud
-        position={[2.5, -0.5, 3]}
-        speed={isPlaying ? 0.18 : 0}
-        opacity={0.1}
-        bounds={[3.5, 1.5, 1.5]}
-        segments={10}
-        color="#e0e0f0"
       />
     </Clouds>
   );
