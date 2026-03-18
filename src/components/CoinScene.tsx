@@ -1,7 +1,7 @@
 import { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { Clouds, Cloud, Environment, Float } from '@react-three/drei';
-import { MapPin, Play, Pause, Volume2, VolumeX } from 'lucide-react';
+import { MapPin, Play, Pause, Volume2, VolumeX, Link2Icon } from 'lucide-react';
 import * as THREE from 'three';
 import styles from './CoinScene.module.css';
 
@@ -273,8 +273,6 @@ export default function CoinScene() {
             <MapPin size={18} />
             West Jurang Manggu, South Tangerang City
           </a>
-
-          <br />
           <br />
           <a
             href="https://linktr.ee/bckyrdcoffee"
@@ -282,6 +280,7 @@ export default function CoinScene() {
             rel="noopener noreferrer"
             className={styles.link}
           >
+            <Link2Icon size={18} />
             linktr.ee/bckyrdcoffee
           </a>
         </p>
