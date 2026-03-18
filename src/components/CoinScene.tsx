@@ -13,9 +13,11 @@ function Coin({ isPlaying }: { isPlaying: boolean }) {
   const [rotationVelocity, setRotationVelocity] = useState(0);
   const lastDragTimeRef = useRef(0);
   const velocityHistoryRef = useRef<number[]>([]);
+  const [jumpVelocity, setJumpVelocity] = useState(0);
+  const [verticalPosition, setVerticalPosition] = useState(0);
 
   const coinGeometry = useMemo(() => {
-    const radius = 1.4;
+    const radius = 1.3;
     const segments = 64;
     const thickness = 0.2;
     const geometry = new THREE.CylinderGeometry(
@@ -76,6 +78,20 @@ function Coin({ isPlaying }: { isPlaying: boolean }) {
   };
 
   useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.code === 'Space' && jumpVelocity === 0) {
+        e.preventDefault();
+        setJumpVelocity(0.15);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [jumpVelocity]);
+
+  useEffect(() => {
     const handlePointerMove = (e: any) => {
       if (!isDragging) return;
 
@@ -129,12 +145,31 @@ function Coin({ isPlaying }: { isPlaying: boolean }) {
 
   useFrame((_, delta) => {
     if (meshRef.current) {
+      // Handle rotation
       if (isPlaying && !isDragging) {
         meshRef.current.rotation.y += delta * 0.4;
       } else if (!isDragging && Math.abs(rotationVelocity) > 0.0001) {
         meshRef.current.rotation.y += rotationVelocity * delta * 60;
         const friction = 0.92;
         setRotationVelocity(rotationVelocity * friction);
+      }
+
+      // Handle jump physics
+      if (jumpVelocity !== 0 || verticalPosition !== 0) {
+        const gravity = -0.008;
+        const newVelocity = jumpVelocity + gravity;
+        const newPosition = verticalPosition + jumpVelocity;
+
+        if (newPosition <= 0) {
+          // Landed
+          setVerticalPosition(0);
+          setJumpVelocity(0);
+          meshRef.current.position.y = 0;
+        } else {
+          setVerticalPosition(newPosition);
+          setJumpVelocity(newVelocity);
+          meshRef.current.position.y = newPosition;
+        }
       }
     }
   });
