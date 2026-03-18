@@ -15,7 +15,7 @@ function Coin({ isPlaying }: { isPlaying: boolean }) {
   const velocityHistoryRef = useRef<number[]>([]);
 
   const coinGeometry = useMemo(() => {
-    const radius = 2;
+    const radius = 1.4;
     const segments = 64;
     const thickness = 0.2;
     const geometry = new THREE.CylinderGeometry(
@@ -30,16 +30,16 @@ function Coin({ isPlaying }: { isPlaying: boolean }) {
   const edgeMaterial = useMemo(() => {
     return new THREE.MeshStandardMaterial({
       color: '#6abfbf',
-      metalness: 0.8,
-      roughness: 0.3,
+      metalness: 0.1,
+      roughness: 0.1,
     });
   }, []);
 
   const faceMaterialFront = useMemo(() => {
     return new THREE.MeshStandardMaterial({
       map: texture,
-      metalness: 0.4,
-      roughness: 0.4,
+      metalness: 0.1,
+      roughness: 0.1,
     });
   }, [texture]);
 
