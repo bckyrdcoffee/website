@@ -93,7 +93,9 @@
 
 .heading {
   margin-top: 80px;
-  color: #f4d03f;
+  /* color: #f4d03f; */
+
+  color: rgba(255, 255, 255, 0.9);
   font-family: 'Arial Black', 'Impact', sans-serif;
   font-size: clamp(1.2rem, 3vw, 2.5rem);
   font-weight: 900;
@@ -102,12 +104,14 @@
   z-index: 10;
   text-align: center;
   white-space: nowrap;
-  text-shadow: 0 0 20px rgba(100, 200, 220, 0.3);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .text {
   
-  color: #f4d03f;
+  /* color: #f4d03f; */
+
+  color: rgba(255, 255, 255, 0.9);
   font-family: 'Arial', sans-serif;
 
   font-size: clamp(0.9rem, 2vw, 1.2rem);
@@ -116,6 +120,7 @@
   text-align: center;
   margin-top: 1rem;
   margin-bottom: 2rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 
 .link {
