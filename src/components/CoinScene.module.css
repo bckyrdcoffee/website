@@ -225,6 +225,27 @@
   pointer-events: auto;
 }
 
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #000000;
+  padding: 0.75rem 0;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.footerText {
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-align: center;
+  margin: 0;
+  opacity: 0.8;
+}
+
 /* @media (max-width: 768px) { */
   .playButton {
     top: 1.5rem;

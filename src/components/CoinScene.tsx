@@ -370,6 +370,9 @@ export default function CoinScene() {
           </span>
         </p>
       </div>
+      <footer className={styles.footer}>
+        <p className={styles.footerText}>© 2026 bckyrdcoffee.id</p>
+      </footer>
     </div>
   );
 }
