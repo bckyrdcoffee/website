@@ -201,7 +201,7 @@ function Scene({ isPlaying }: { isPlaying: boolean }) {
         <Coin isPlaying={isPlaying} />
       </Float>
       <FogClouds isPlaying={isPlaying} />
-      <Environment preset="night" />
+      <Environment preset="city" />
     </>
   );
 }
