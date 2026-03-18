@@ -170,6 +170,22 @@ export function FogClouds({ isPlaying }: { isPlaying: boolean }) {
         segments={10}
         color="#f0f0f8"
       />
+      <Cloud
+        position={[-2, 0.5, 2]}
+        speed={isPlaying ? 0.25 : 0}
+        opacity={0.08}
+        bounds={[3, 2, 2]}
+        segments={12}
+        color="#f5f5fa"
+      />
+      <Cloud
+        position={[2.5, -0.5, 3]}
+        speed={isPlaying ? 0.18 : 0}
+        opacity={0.1}
+        bounds={[3.5, 1.5, 1.5]}
+        segments={10}
+        color="#e0e0f0"
+      />
     </Clouds>
   );
 }
@@ -234,38 +250,41 @@ export default function CoinScene() {
       <audio ref={audioRef} loop>
         <source src="/background-music.mp3" type="audio/mpeg" />
       </audio>
-      <button onClick={toggleAudio} className={styles.playButton}>
-        {isPlaying ? <Pause size={24} /> : <Play size={24} />}
-      </button>
-      <button onClick={toggleMute} className={styles.muteButton}>
-        {isMute ? <VolumeX size={24} /> : <Volume2 size={24} />}
-      </button>
-      <h1 className={styles.heading}>LOCKD IN</h1>
-      <p className={styles.text}>
-        <a
-          href="https://maps.app.goo.gl/1ittg6AuV18HnEyx9"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.link}
-        >
-          <MapPin size={18} />
-          West Jurang Manggu, South Tangerang City
-        </a>
-
-        <br />
-        <a
-          href="https://linktr.ee/bckyrdcoffee"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.link}
-        >
-          linktr.ee/bckyrdcoffee
-        </a>
-      </p>
       <div className={styles.canvasContainer}>
         <Canvas camera={{ position: [0, 0, 7], fov: 50 }}>
           <Scene isPlaying={isPlaying} />
         </Canvas>
+      </div>
+      <div className={styles.content}>
+        <button onClick={toggleAudio} className={styles.playButton}>
+          {isPlaying ? <Pause size={24} /> : <Play size={24} />}
+        </button>
+        <button onClick={toggleMute} className={styles.muteButton}>
+          {isMute ? <VolumeX size={24} /> : <Volume2 size={24} />}
+        </button>
+        <h1 className={styles.heading}>LOCKD IN ☕</h1>
+        <p className={styles.text}>
+          <a
+            href="https://maps.app.goo.gl/1ittg6AuV18HnEyx9"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.link}
+          >
+            <MapPin size={18} />
+            West Jurang Manggu, South Tangerang City
+          </a>
+
+          <br />
+          <br />
+          <a
+            href="https://linktr.ee/bckyrdcoffee"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.link}
+          >
+            linktr.ee/bckyrdcoffee
+          </a>
+        </p>
       </div>
     </div>
   );
