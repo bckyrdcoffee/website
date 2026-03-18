@@ -27,10 +27,15 @@ function Coin({ isPlaying }: { isPlaying: boolean }) {
     return geometry;
   }, []);
 
+  // const bckyrdBlue = '#6abfbf';
+  // originally 0.1, 0.1
+  const faceMetalness = 0.7;
+  const faceRoughness = 0.1;
+
   const edgeMaterial = useMemo(() => {
     return new THREE.MeshStandardMaterial({
-      color: '#6abfbf',
-      metalness: 0.1,
+      color: 'gold',
+      metalness: 0.8,
       roughness: 0.1,
     });
   }, []);
@@ -38,10 +43,10 @@ function Coin({ isPlaying }: { isPlaying: boolean }) {
   const faceMaterialFront = useMemo(() => {
     return new THREE.MeshStandardMaterial({
       map: texture,
-      metalness: 0.1,
-      roughness: 0.1,
+      metalness: faceMetalness,
+      roughness: faceRoughness,
     });
-  }, [texture]);
+  }, [texture, faceMetalness, faceRoughness]);
 
   const faceMaterialBack = useMemo(() => {
     const flippedTexture = texture.clone();
@@ -50,10 +55,12 @@ function Coin({ isPlaying }: { isPlaying: boolean }) {
     flippedTexture.needsUpdate = true;
     return new THREE.MeshStandardMaterial({
       map: flippedTexture,
-      metalness: 0.4,
-      roughness: 0.4,
+      // metalness: 0.4,
+      // roughness: 0.4,
+      metalness: faceMetalness,
+      roughness: faceRoughness,
     });
-  }, [texture]);
+  }, [texture, faceMetalness, faceRoughness]);
 
   const materials = useMemo(() => {
     return [edgeMaterial, faceMaterialFront, faceMaterialBack];
