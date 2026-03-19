@@ -232,7 +232,7 @@
   align-items: center;
   justify-content: flex-end;
   height: 100%;
-  padding-bottom: 3rem;
+  padding-bottom: 4rem;
   pointer-events: none;
 }
 
@@ -241,14 +241,25 @@
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   background: #000000;
   padding: 0.75rem 0;
-  z-index: 10;
+  z-index: 100;
   pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .content {
+    justify-content: center;
+    padding-bottom: 5rem;
+  }
+
+  .heading {
+    margin-top: 0;
+  }
 }
 
 .footerText {
