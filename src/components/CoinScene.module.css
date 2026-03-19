@@ -187,8 +187,16 @@
   transition: opacity 0.3s ease;
 }
 
+.link svg:last-child {
+  transition: transform 0.3s ease;
+}
+
 .link:hover {
   opacity: 0.7;
+}
+
+.link:hover svg:last-child {
+  transform: translateX(4px);
 }
 
 .linksContainer {

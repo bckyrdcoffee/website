@@ -17,6 +17,7 @@ import {
   Phone,
   Instagram,
   Bike,
+  ArrowUpRight,
 } from 'lucide-react';
 import * as THREE from 'three';
 import styles from './CoinScene.module.css';
@@ -324,7 +325,7 @@ export default function CoinScene() {
         <button onClick={toggleMute} className={styles.muteButton}>
           {isMute ? <VolumeX size={24} /> : <Volume2 size={24} />}
         </button>
-        <h1 className={styles.heading}>LOCKD IN ☕</h1>
+        <h1 className={styles.heading}>BCKYRD COFFEE</h1>
         <p className={styles.text}>
           <a
             href="https://maps.app.goo.gl/1ittg6AuV18HnEyx9"
@@ -334,6 +335,7 @@ export default function CoinScene() {
           >
             <MapPin size={18} />
             West Jurang Manggu, South Tangerang City
+            <ArrowUpRight size={16} />
           </a>
           <br />
           <br />
@@ -346,6 +348,7 @@ export default function CoinScene() {
             >
               <Instagram size={18} />
               backyardcoffeeandshop
+              <ArrowUpRight size={16} />
             </a>
             <span className={styles.separator}>・</span>
             <a
@@ -356,6 +359,7 @@ export default function CoinScene() {
             >
               <Phone size={18} />
               Contact Person
+              <ArrowUpRight size={16} />
             </a>
             <span className={styles.separator}>・</span>
             <a
@@ -366,6 +370,7 @@ export default function CoinScene() {
             >
               <Bike size={18} />
               GoFood
+              <ArrowUpRight size={16} />
             </a>
           </span>
         </p>
