@@ -4,14 +4,21 @@
   font-style: normal;
 }
 
+/* radial-gradient(ellipse at center, rgb(23 55 112) 0%, rgb(51 51 51) 50%, rgb(45 45 45) 100%) */
+/* radial-gradient(
+    ellipse at center,
+    rgba(20, 30, 48, 1) 0%,
+    rgba(10, 10, 15, 1) 50%,
+    rgba(5, 5, 8, 1) 100% */
+
 .container {
   width: 100vw;
   height: 100vh;
   background: radial-gradient(
     ellipse at center,
-    rgba(20, 30, 48, 1) 0%,
-    rgba(10, 10, 15, 1) 50%,
-    rgba(5, 5, 8, 1) 100%
+    rgb(23 55 112) 0%,
+    rgb(51 51 51) 50%,
+    rgb(45 45 45) 100%
   );
   display: flex;
   flex-direction: column;
