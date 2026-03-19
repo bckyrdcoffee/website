@@ -339,13 +339,13 @@ export default function CoinScene() {
           <br />
           <span className={styles.linksContainer}>
             <a
-              href="https://gofood.link/u/N0myR"
+              href="https://instagram.com/backyardcoffeeandshop"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.link}
             >
-              <Bike size={18} />
-              GoFood
+              <Instagram size={18} />
+              backyardcoffeeandshop
             </a>
             <span className={styles.separator}>・</span>
             <a
@@ -359,13 +359,13 @@ export default function CoinScene() {
             </a>
             <span className={styles.separator}>・</span>
             <a
-              href="https://instagram.com/backyardcoffeeandshop"
+              href="https://gofood.link/u/N0myR"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.link}
             >
-              <Instagram size={18} />
-              backyardcoffeeandshop
+              <Bike size={18} />
+              GoFood
             </a>
           </span>
         </p>
