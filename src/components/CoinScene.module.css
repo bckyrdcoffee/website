@@ -1,7 +1,18 @@
+.staatliches-regular {
+  font-family: 'Staatliches', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .container {
   width: 100vw;
   height: 100vh;
-  background: radial-gradient(ellipse at center, rgba(20, 30, 48, 1) 0%, rgba(10, 10, 15, 1) 50%, rgba(5, 5, 8, 1) 100%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(20, 30, 48, 1) 0%,
+    rgba(10, 10, 15, 1) 50%,
+    rgba(5, 5, 8, 1) 100%
+  );
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,7 +44,11 @@
 
 .loaderProgress {
   height: 100%;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9));
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.9)
+  );
   border-radius: 2px;
   transition: width 0.3s ease;
 }
@@ -131,9 +146,8 @@
 .heading {
   margin-top: 80px;
   /* color: #f4d03f; */
-
   color: rgba(255, 255, 255, 0.9);
-  font-family: 'Arial Black', 'Impact', sans-serif;
+  font-family: 'Staatliches', 'Arial Black', 'Impact', sans-serif;
   font-size: clamp(1.2rem, 3vw, 2.5rem);
   font-weight: 900;
   text-transform: uppercase;
@@ -145,11 +159,12 @@
 }
 
 .text {
-  
   /* color: #f4d03f; */
 
   color: rgba(255, 255, 255, 0.9);
   font-family: 'Arial', sans-serif;
+
+  letter-spacing: 0.1em;
 
   font-size: clamp(0.9rem, 2vw, 1.2rem);
   font-weight: 400;
@@ -161,7 +176,7 @@
 }
 
 .link {
-  font-family: 'Arial Black', 'Impact', sans-serif;
+  font-family: 'Staatliches', 'Arial Black', 'Impact', sans-serif;
   color: inherit;
   font-weight: 900;
   text-decoration: none;
@@ -247,23 +262,23 @@
 }
 
 /* @media (max-width: 768px) { */
-  .playButton {
-    top: 1.5rem;
-    right: 50%;
-    transform: translateX(calc(50% + 2rem));
-  }
+.playButton {
+  top: 1.5rem;
+  right: 50%;
+  transform: translateX(calc(50% + 2rem));
+}
 
-  .playButton:hover {
-    transform: translateX(calc(50% + 2rem)) scale(1.05);
-  }
+.playButton:hover {
+  transform: translateX(calc(50% + 2rem)) scale(1.05);
+}
 
-  .muteButton {
-    top: 1.5rem;
-    right: 50%;
-    transform: translateX(calc(50% - 2rem));
-  }
+.muteButton {
+  top: 1.5rem;
+  right: 50%;
+  transform: translateX(calc(50% - 2rem));
+}
 
-  .muteButton:hover {
-    transform: translateX(calc(50% - 2rem)) scale(1.05);
-  }
+.muteButton:hover {
+  transform: translateX(calc(50% - 2rem)) scale(1.05);
+}
 /* } */
