@@ -1,0 +1,298 @@
+.page {
+  min-height: 100vh;
+  background: #f5ede4;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0;
+  margin: 0;
+}
+
+.sheet {
+  width: 100%;
+  max-width: 640px;
+  background: #f5ede4;
+  padding: 44px 36px 28px;
+}
+
+/* ---- HEADER ---- */
+.brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.brandText {
+  flex: 1;
+}
+
+.brandName {
+  font-family: 'Staatliches', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 68px;
+  line-height: 0.9;
+  letter-spacing: 2px;
+  color: #3a1e0e;
+}
+
+.brandSub {
+  font-family: 'Staatliches', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 50px;
+  line-height: 0.95;
+  letter-spacing: 1.5px;
+  color: #3a1e0e;
+  margin-top: 2px;
+}
+
+.brandLine {
+  font-family: 'Inter', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  color: #9e7a6a;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+.logo {
+  width: 110px;
+  height: 110px;
+  flex-shrink: 0;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ---- DIVIDER ---- */
+.divider {
+  height: 1px;
+  background: #c24b20;
+  opacity: 0.3;
+  margin: 20px 0 14px;
+}
+
+/* ---- GRID ---- */
+.grid {
+  display: grid;
+  grid-template-columns: 53fr 47fr;
+  gap: 0;
+  position: relative;
+}
+
+.gridLine {
+  position: absolute;
+  left: 53%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform: translateX(-50%);
+  background: rgba(194, 75, 32, 0.18);
+}
+
+.colLeft {
+  padding-right: 18px;
+}
+
+.colRight {
+  padding-left: 18px;
+}
+
+/* ---- SECTION HEADERS ---- */
+.section {
+  margin-bottom: 14px;
+}
+
+.sectionHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1.5px solid rgba(194, 75, 32, 0.45);
+  border-bottom: 1.5px solid rgba(194, 75, 32, 0.45);
+  padding: 5px 0;
+  margin-bottom: 6px;
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.sectionIcon {
+  color: #c24b20;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.sectionTitle {
+  font-family: 'Staatliches', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 19px;
+  letter-spacing: 0.8px;
+  color: #c24b20;
+}
+
+.sectionDollar {
+  font-family: 'Staatliches', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 19px;
+  color: #c24b20;
+}
+
+/* ---- ITEMS ---- */
+.items {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 12.5px;
+  color: #3a1e0e;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(194, 75, 32, 0.12);
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.itemName {
+  flex: 1;
+}
+
+.itemPrice {
+  font-weight: 700;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.star {
+  color: #c24b20;
+  font-size: 10px;
+  margin-left: 2px;
+}
+
+.starPrice {
+  color: #c24b20;
+  font-size: 10px;
+  margin-right: 3px;
+}
+
+/* ---- FROM THE LAND ---- */
+.from {
+  margin-top: 14px;
+  font-family: 'Staatliches', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #c24b20;
+  padding-bottom: 6px;
+  /* border-bottom: 1.5px solid rgba(194, 75, 32, 0.45); */
+}
+
+/* ---- FLAVOUR BOX ---- */
+.flavourBox {
+  border: 1.5px dashed rgba(194, 75, 32, 0.35);
+  border-radius: 10px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: 'Inter', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 12.5px;
+  color: #3a1e0e;
+}
+
+.flavour {
+  line-height: 1.6;
+}
+
+/* ---- FOOTER ---- */
+.footerLine {
+  height: 1px;
+  background: rgba(194, 75, 32, 0.25);
+  margin: 18px 0 14px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-bottom: 6px;
+}
+
+.igIcon {
+  color: #3a1e0e;
+  display: flex;
+  align-items: center;
+}
+
+.igHandle {
+  font-family: 'Inter', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-size: 13px;
+  color: #3a1e0e;
+  letter-spacing: 0.2px;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 580px) {
+  .sheet {
+    padding: 28px 18px 20px;
+  }
+
+  .brandName {
+    font-size: 48px;
+  }
+
+  .brandSub {
+    font-size: 36px;
+  }
+
+  .logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .gridLine {
+    display: none;
+  }
+
+  .colLeft {
+    padding-right: 0;
+  }
+
+  .colRight {
+    padding-left: 0;
+    margin-top: 8px;
+  }
+}
