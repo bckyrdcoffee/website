@@ -75,7 +75,7 @@
 /* ---- DIVIDER ---- */
 .divider {
   height: 1px;
-  background: #c24b20;
+  /* background: #c24b20; */
   opacity: 0.3;
   margin: 20px 0 14px;
 }
