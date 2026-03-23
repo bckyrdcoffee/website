@@ -101,7 +101,7 @@ export default function Menu() {
               </div>
             </div>
             <div className={styles.logo}>
-              <img src="/logo-menu.png" alt="BCKYRD Logo" />
+              <img src="/coin.png" alt="BCKYRD Logo" />
             </div>
           </div>
         </header>
@@ -152,7 +152,8 @@ export default function Menu() {
                     <Coffee size={iconSize} strokeWidth={iconStroke} />
                   </span>
                   <span className={styles.sectionTitle}>
-                    FLAVOUR LATTE – 35K
+                    FLAVOUR LATTE –{' '}
+                    <span className={styles.sectionPrice}>35K</span>
                   </span>
                 </div>
               </div>
