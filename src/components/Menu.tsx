@@ -117,7 +117,7 @@ export default function Menu() {
             <MenuSection
               icon={<Coffee size={iconSize} strokeWidth={iconStroke} />}
               title="COFFEE"
-              dollar="$"
+              dollar="IDR"
               items={coffeeItems}
             />
             <div className={styles.from}>FROM THE LAND OF INDONESIA</div>
@@ -128,19 +128,19 @@ export default function Menu() {
             <MenuSection
               icon={<Coffee size={iconSize} strokeWidth={iconStroke} />}
               title="MANUAL BREW"
-              dollar="$"
+              dollar="IDR"
               items={manualBrewItems}
             />
             <MenuSection
               icon={<Leaf size={iconSize} strokeWidth={iconStroke} />}
               title="TEA"
-              dollar="$"
+              dollar="IDR"
               items={teaItems}
             />
             <MenuSection
               icon={<CupSoda size={iconSize} strokeWidth={iconStroke} />}
               title="NON COFFEE"
-              dollar="$"
+              dollar="IDR"
               items={nonCoffeeItems}
             />
 
@@ -152,8 +152,8 @@ export default function Menu() {
                     <Coffee size={iconSize} strokeWidth={iconStroke} />
                   </span>
                   <span className={styles.sectionTitle}>
-                    FLAVOUR LATTE –{' '}
-                    <span className={styles.sectionPrice}>35K</span>
+                    FLAVOUR LATTE{' '}
+                    <span className={styles.sectionPrice}>⋅ 35K</span>
                   </span>
                 </div>
               </div>
