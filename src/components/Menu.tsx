@@ -153,7 +153,7 @@ export default function Menu() {
                   </span>
                   <span className={styles.sectionTitle}>
                     FLAVOUR LATTE{' '}
-                    <span className={styles.sectionPrice}>⋅ 35K</span>
+                    <span className={styles.sectionPrice}>• 35K</span>
                   </span>
                 </div>
               </div>
