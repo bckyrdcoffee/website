@@ -97,7 +97,7 @@ export default function Menu() {
               <div className={styles.brandName}>BCKYRD</div>
               <div className={styles.brandSub}>SIGNATURE</div>
               <div className={styles.brandLine}>
-                SPECIALITY COFFEE &nbsp;|&nbsp; DINE IN &nbsp;|&nbsp; TAKE AWAY
+                SPECIALTY COFFEE &nbsp;|&nbsp; DINE IN &nbsp;|&nbsp; TAKE AWAY
               </div>
             </div>
             <div className={styles.logo}>
